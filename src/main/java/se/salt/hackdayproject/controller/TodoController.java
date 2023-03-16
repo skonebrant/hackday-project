@@ -1,6 +1,5 @@
 package se.salt.hackdayproject.controller;
 
-import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -8,6 +7,7 @@ import se.salt.hackdayproject.model.Todo;
 import se.salt.hackdayproject.repository.TodoRepository;
 
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,13 +20,42 @@ public class TodoController {
     TodoRepository repo;
 
     @GetMapping("/todos")
-    public ResponseEntity<List<Todo>> getAllTodos() {
-        return ResponseEntity.ok(repo.findAll());
+    public ResponseEntity<List<Todo>> getAllTodos(@RequestParam String title) {
+        try {
+            List<Todo> todos = new ArrayList<>();
+
+            if (title == null) {
+                todos.addAll(repo.findAll());
+            } else {
+                todos.addAll(repo.findByTitleContaining(title));
+            }
+            if (todos.isEmpty()) {
+                return ResponseEntity.noContent().build();
+            }
+            return ResponseEntity.ok(todos);
+        } catch (Exception e) {
+            return ResponseEntity.internalServerError().build();
+        }
     }
 
     @GetMapping("/todos/{id}")
     public ResponseEntity<Todo> getTodo(@PathVariable String id) {
-        return ResponseEntity.ok(repo.findById(id).orElse(null));
+        Optional<Todo> todo = repo.findById(id);
+        return todo.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    @GetMapping("/todos/started")
+    public ResponseEntity<List<Todo>> findByStarted() {
+        try {
+            List<Todo> todos = repo.findByStarted(true);
+
+            if (todos.isEmpty()) {
+                return ResponseEntity.noContent().build();
+            }
+            return ResponseEntity.ok(todos);
+        } catch (Exception e) {
+            return ResponseEntity.internalServerError().build();
+        }
     }
 
     @PostMapping("/todos")
@@ -39,7 +68,7 @@ public class TodoController {
     @PostMapping("/todos/{id}")
     public ResponseEntity<Todo> updateTodo(@PathVariable String id, @RequestBody Todo todo) {
         Optional<Todo> todoToUpdate = repo.findById(id);
-        if(todoToUpdate.isPresent()) {
+        if (todoToUpdate.isPresent()) {
             Todo toReturn = todoToUpdate.get();
             toReturn.setTitle(todo.getTitle());
             toReturn.setDescription(todo.getDescription());
@@ -53,6 +82,16 @@ public class TodoController {
     public ResponseEntity<Void> deleteTodo(@PathVariable String id) {
         try {
             repo.deleteById(id);
+            return ResponseEntity.noContent().build();
+        } catch (Exception e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @DeleteMapping("/todos/")
+    public ResponseEntity<Void> deleteAllTodos() {
+        try {
+            repo.deleteAll();
             return ResponseEntity.noContent().build();
         } catch (Exception e) {
             return ResponseEntity.notFound().build();

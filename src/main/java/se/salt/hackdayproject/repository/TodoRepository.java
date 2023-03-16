@@ -8,6 +8,6 @@ import java.util.List;
 
 @Repository
 public interface TodoRepository extends MongoRepository<Todo, String> {
-    List<Todo> findByTitleContaining();
-    List<Todo> findByStarted();
+    List<Todo> findByTitleContaining(String title);
+    List<Todo> findByStarted(boolean started);
 }
