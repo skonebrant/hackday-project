@@ -35,44 +35,42 @@ const EditTodo = () => {
   };
 
   return (
-    <div className="columns mt-5">
-      <div className="column is-half">
-        <form onSubmit={updateTodo}>
-          <div className="field">
-            <label className="label">Title</label>
-            <div className="control">
-              <input
-                type="text"
-                className="input"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                placeholder="Title"
-              />
-            </div>
+    <div className="edittodo-container">
+      <form onSubmit={updateTodo}>
+        <div className="field">
+          <label className="label">Title</label>
+          <div className="control">
+            <input
+              type="text"
+              className="input"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              placeholder="Title"
+            />
           </div>
-          <div className="field">
-            <label className="label">Description</label>
-            <div className="control">
-              <input
-                type="text"
-                className="input"
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-                placeholder="Description"
-              />
-            </div>
+        </div>
+        <div className="field">
+          <label className="label">Description</label>
+          <div className="control">
+            <input
+              type="text"
+              className="input"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              placeholder="Description"
+            />
           </div>
-          <div className="field">
-            <div className="control">
-              <button
-                type="submit"
-                className="button is-success">
-                Update
-              </button>
-            </div>
+        </div>
+        <div className="field">
+          <div className="control">
+            <button
+              type="submit"
+              className="button button-done">
+              Update
+            </button>
           </div>
-        </form>
-      </div>
+        </div>
+      </form>
     </div>
   );
 };

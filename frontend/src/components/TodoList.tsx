@@ -24,31 +24,41 @@ const TodoList = () => {
   };
 
   return (
-    <div>
-      <Link
-        to="add"
-        className="button is-success">
-        Add New
-      </Link>
-      {todos.map((todo) => (
-        <div key={todo.id}>
-          <ul>
-            <li>{todo.title}</li>
-            <li>{todo.description}</li>
-          </ul>
-          <Link
-            to={`edit/${todo.id}`}
-            className="button is-info is-small mr-1">
-            Edit
-          </Link>
-          <button
-            onClick={() => deleteTodos(todo.id)}
-            className="button is-danger is-small">
-            Delete
-          </button>
-        </div>
-      ))}
-    </div>
+    <>
+      <div className="add-button-container">
+        <Link
+          to="add"
+          className="button button is-success">
+          Add New
+        </Link>
+      </div>
+      <article className="todolist-container">
+        {todos.map((todo) => (
+          <div
+            className="todolist-card"
+            key={todo.id}>
+            <ul>
+              <li>
+                <h3>{todo.title}</h3>
+              </li>
+              <li>{todo.description}</li>
+            </ul>
+            <div className="todolist-button-container">
+              <Link
+                to={`edit/${todo.id}`}
+                className="button button-edit">
+                Edit
+              </Link>
+              <button
+                onClick={() => deleteTodos(todo.id)}
+                className="button button-delete">
+                Delete
+              </button>
+            </div>
+          </div>
+        ))}
+      </article>
+    </>
   );
 };
 export default TodoList;
