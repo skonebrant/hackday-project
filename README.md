@@ -1,5 +1,5 @@
 # Hackday Project
-Hackday-project using React, TypeScript, Spring boot and MongoDB
+Hackday-project creating a fullstack, functioning, CRUD app in one day using React, TypeScript, Spring boot and MongoDB
 
 # Description
 A one day project that started out with grand plans (including but not limited to Swedish government APIs) but ended up being this MVP to be able to finish it in one day.
