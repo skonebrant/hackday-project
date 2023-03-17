@@ -63,14 +63,12 @@ const EditTodo = () => {
             />
           </div>
         </div>
-        <div className="field">
-          <div className="control">
-            <button
-              type="submit"
-              className="button button-done">
-              Update
-            </button>
-          </div>
+        <div className="control">
+          <button
+            type="submit"
+            className="button button-done">
+            Update
+          </button>
         </div>
       </form>
     </div>
