@@ -35,9 +35,12 @@ body {
   border-radius: 18px;
 }
 
+button {
+  border: none;
+}
 .button {
   color: rgb(163, 163, 163);
-  border: 2px solid rgb(163, 163, 163);
+  box-shadow: 0 2px 4px #ccc;
   padding: 7px;
   border-radius: 10px;
   margin: 5px;
@@ -57,14 +60,14 @@ body {
 .todolist-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  grid-column-gap: 15px;
-  grid-row-gap: 15px;
   margin-left: 5px;
 }
 
 .todolist-card {
-  width: 350px;
+  width: 400px;
+  box-shadow: 0 2px 4px #f1f1f1;
+  border-radius: 10px;
+  margin: 10px;
 }
 
 .addtodo-container {
@@ -147,6 +150,7 @@ body {
   transition: 0.5s;
   outline: none;
   background: #dcdcdc;
+  cursor: pointer;
 }
 
 .todolist-card ul {
@@ -155,5 +159,6 @@ body {
 }
 
 .todolist-button-container {
+  text-align: center;
   margin-bottom: 5px;
 }
