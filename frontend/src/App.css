@@ -5,23 +5,53 @@
 }
 
 body {
-  background: whitesmoke;
+  background-color: #4158d0;
+  background-image: linear-gradient(
+    43deg,
+    #4158d0 0%,
+    #c850c0 46%,
+    #ffcc70 100%
+  );
+
+  font-family: Arial, Helvetica, sans-serif;
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  color: rgb(163, 163, 163);
 }
 
 .button {
   text-decoration: none;
-  color: black;
+  color: white;
 }
 
 .add-button-container {
   display: flex;
   justify-content: center;
-  height: 70px;
+  align-items: center;
+  height: 85px;
+  border-radius: 18px;
+}
+
+.button {
+  color: rgb(163, 163, 163);
+  border: 2px solid rgb(163, 163, 163);
+  padding: 7px;
+  border-radius: 10px;
+  margin: 5px;
+  font-size: 13px;
+}
+
+.button-to-add {
+  padding: 15px;
+}
+
+.container {
+  border-radius: 20px;
+  background: white;
+  box-shadow: 0 5px 20px white;
 }
 
 .todolist-container {
@@ -30,11 +60,10 @@ body {
   grid-template-rows: repeat(2, 1fr);
   grid-column-gap: 15px;
   grid-row-gap: 15px;
+  margin-left: 5px;
 }
 
 .todolist-card {
-  border: 2px solid black;
-  border-radius: 20px;
   width: 350px;
 }
 
@@ -42,10 +71,82 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 2px solid black;
   border-radius: 20px;
   width: 350px;
-  height: 150px;
+  height: 200px;
+}
+
+.addtodo-form {
+  height: 100%;
+}
+
+.addtodo-form button {
+  margin-top: 10px;
+  margin-left: 125px;
+  padding: 12px;
+}
+
+.addtodo-title {
+  margin-top: 25px;
+  margin-bottom: 10px;
+}
+
+.addtodo-container input {
+  border: 1px solid rgb(163, 163, 163);
+  transition: 0.5s;
+  outline: none;
+  width: 300px;
+  height: 25px;
+  border-radius: 5px;
+  margin-top: 5px;
+}
+
+.addtodo-container input:focus {
+  border: 2px solid #555;
+}
+
+.edittodo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  width: 350px;
+  height: 200px;
+}
+
+.edittodo-form {
+  height: 100%;
+}
+
+.edittodo-form button {
+  margin-top: 10px;
+  margin-left: 125px;
+  padding: 12px;
+}
+
+.edittodo-title {
+  margin-top: 25px;
+  margin-bottom: 10px;
+}
+
+.edittodo-container input {
+  margin-top: 5px;
+  border: 1px solid rgb(163, 163, 163);
+  transition: 0.5s;
+  outline: none;
+  width: 300px;
+  height: 25px;
+  border-radius: 5px;
+}
+
+.edittodo-container input:focus {
+  border: 2px solid #555;
+}
+
+.button:hover {
+  transition: 0.5s;
+  outline: none;
+  background: #dcdcdc;
 }
 
 .todolist-card ul {
@@ -54,7 +155,5 @@ body {
 }
 
 .todolist-button-container {
-  display: flex;
-  justify-content: space-evenly;
   margin-bottom: 5px;
 }

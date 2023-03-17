@@ -28,8 +28,8 @@ const TodoList = () => {
       <div className="add-button-container">
         <Link
           to="add"
-          className="button button is-success">
-          Add New
+          className="button button-to-add">
+          Add a new to-do!
         </Link>
       </div>
       <article className="todolist-container">

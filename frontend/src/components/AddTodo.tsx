@@ -24,20 +24,22 @@ const AddTodo = () => {
 
   return (
     <div className="addtodo-container">
-      <form onSubmit={saveTodo}>
-        <div className="field">
-          <label className="label">Title</label>
+      <form
+        className="addtodo-form"
+        onSubmit={saveTodo}>
+        <div className="addtodo-title">
+          <label className="addtodo-label">Title</label>
           <div className="control">
             <input
               type="text"
               className="input"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              placeholder="Title"
+              placeholder="Add a title.."
             />
           </div>
         </div>
-        <div className="field">
+        <div className="addtodo-description">
           <label className="label">Description</label>
           <div className="control">
             <input
@@ -45,19 +47,15 @@ const AddTodo = () => {
               className="input"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              placeholder="Description"
+              placeholder="Add a description.."
             />
           </div>
         </div>
-        <div className="field">
-          <div className="control">
-            <button
-              type="submit"
-              className="button button-done">
-              Save
-            </button>
-          </div>
-        </div>
+        <button
+          type="submit"
+          className="button button-done">
+          Save
+        </button>
       </form>
     </div>
   );

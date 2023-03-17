@@ -15,15 +15,15 @@ const EditTodo = () => {
 
   const getTodoById = async () => {
     const response = await axios.get(`http://localhost:8080/api/todos/${id}`);
-    setTitle(response.data.name);
-    setDescription(response.data.email);
-    setStarted(response.data.gender);
+    setTitle(response.data.title);
+    setDescription(response.data.description);
+    setStarted(response.data.started);
   };
 
   const updateTodo = async (e: SyntheticEvent) => {
     e.preventDefault();
     try {
-      await axios.patch(`http://localhost:8080/api/todos/${id}`, {
+      await axios.post(`http://localhost:8080/api/todos/${id}`, {
         title,
         description,
         started,
@@ -36,8 +36,10 @@ const EditTodo = () => {
 
   return (
     <div className="edittodo-container">
-      <form onSubmit={updateTodo}>
-        <div className="field">
+      <form
+        className="edittodo-form"
+        onSubmit={updateTodo}>
+        <div className="edittodo-title">
           <label className="label">Title</label>
           <div className="control">
             <input
@@ -49,7 +51,7 @@ const EditTodo = () => {
             />
           </div>
         </div>
-        <div className="field">
+        <div className="edittodo-description">
           <label className="label">Description</label>
           <div className="control">
             <input
