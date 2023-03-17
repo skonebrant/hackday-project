@@ -4,7 +4,7 @@ Hackday-project using React, TypeScript, Spring boot and MongoDB
 # Description
 A one day project that started out with grand plans (including but not limited to Swedish government APIs) but ended up being this MVP to be able to finish it in one day.
 
-The entire application is done by my self with vanilla React and vanilla CSS to learn the process of building a full stack application.
+The application is built using vanilla React and CSS for the frontend and Spring boot with MongoDB (MongoDB cloud) for the backend.
 
 If I had more time I would've put more emphasis on making it a proper SPA and trying out Next JS in the process.
 
