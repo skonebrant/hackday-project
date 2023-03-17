@@ -1,4 +1,5 @@
 /* eslint-disable react-hooks/rules-of-hooks */
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import ITodo from "../todo.type";
@@ -11,16 +12,17 @@ const TodoList = () => {
   }, []);
 
   const getTodos = async () => {
-    const response = await fetch("http://localhost:8080/api/todos");
-    const json = (await response.json()) as ITodo[];
-    setTodos(json);
+    const response = await axios.get("http://localhost:8080/api/todos");
+    setTodos(response.data);
   };
 
   const deleteTodos = async (todoId: string) => {
-    const response = await fetch(`http://localhost:8080/api/todos/${todoId}`, {
-      method: "DELETE",
-    });
-    getTodos();
+    try {
+      await axios.delete(`http://localhost:8080/api/todos/${todoId}`);
+      getTodos();
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

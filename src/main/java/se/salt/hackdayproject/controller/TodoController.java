@@ -7,7 +7,6 @@ import se.salt.hackdayproject.model.Todo;
 import se.salt.hackdayproject.repository.TodoRepository;
 
 import java.net.URI;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,15 +19,9 @@ public class TodoController {
     TodoRepository repo;
 
     @GetMapping("/todos")
-    public ResponseEntity<List<Todo>> getAllTodos(@RequestParam String title) {
+    public ResponseEntity<List<Todo>> getAllTodos() {
         try {
-            List<Todo> todos = new ArrayList<>();
-
-            if (title == null) {
-                todos.addAll(repo.findAll());
-            } else {
-                todos.addAll(repo.findByTitleContaining(title));
-            }
+            List<Todo> todos = repo.findAll();
             if (todos.isEmpty()) {
                 return ResponseEntity.noContent().build();
             }
